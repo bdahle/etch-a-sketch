@@ -1,12 +1,21 @@
 const container = document.getElementById("container");
 
-for (i = 0; i < 16 * 16; i++) {
-  const div = document.createElement("div");
-  div.style.backgroundColor = random_rgba();
-  div.style.width = "30px";
-  div.style.height = "30px";
+const gridDimensions = 600;
+let gridSize = 16;
+let tileSize = gridDimensions / gridSize;
+container.style.gridTemplateColumns = `repeat(${gridSize}, auto)`;
 
-  container.appendChild(div);
+for (i = 0; i < gridSize * gridSize; i++) {
+  const tile = document.createElement("div");
+  tile.style.backgroundColor = random_rgba();
+  tile.style.width = `${tileSize}px`;
+  tile.style.height = `${tileSize}px`;
+
+  tile.addEventListener("mouseover", function (e) {
+    this.style.backgroundColor = "red";
+  });
+
+  container.appendChild(tile);
 }
 
 function random_rgba() {
