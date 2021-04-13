@@ -1,11 +1,10 @@
 const container = document.getElementById("container");
-console.log(container);
 
 for (i = 0; i < 16 * 16; i++) {
   const div = document.createElement("div");
   div.style.backgroundColor = random_rgba();
-  div.style.width = "10px";
-  div.style.height = "10px";
+  div.style.width = "30px";
+  div.style.height = "30px";
 
   container.appendChild(div);
 }
