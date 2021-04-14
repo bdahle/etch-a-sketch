@@ -1,16 +1,15 @@
 const container = document.getElementById("container");
 const resetButton = document.getElementById("reset-button");
 resetButton.onclick = resetGrid;
+const gridDimensions = 600;
 
-function makeGrid(gridSize = 16) {
+function removeTiles() {
   while (container.firstChild) {
     container.removeChild(container.lastChild);
   }
+}
 
-  const gridDimensions = 600;
-  let tileSize = gridDimensions / gridSize;
-  container.style.gridTemplateColumns = `repeat(${gridSize}, auto)`;
-
+function addTiles(tileSize, gridSize) {
   for (i = 0; i < gridSize * gridSize; i++) {
     const tile = document.createElement("div");
     tile.style.backgroundColor = random_rgba();
@@ -23,6 +22,13 @@ function makeGrid(gridSize = 16) {
 
     container.appendChild(tile);
   }
+}
+
+function makeGrid(gridSize = 16) {
+  removeTiles();
+  let tileSize = gridDimensions / gridSize;
+  container.style.gridTemplateColumns = `repeat(${gridSize}, auto)`;
+  addTiles(tileSize, gridSize);
 }
 
 makeGrid();
