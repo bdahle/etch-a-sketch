@@ -1,21 +1,35 @@
 const container = document.getElementById("container");
+const resetButton = document.getElementById("reset-button");
+resetButton.onclick = resetGrid;
 
-const gridDimensions = 600;
-let gridSize = 16;
-let tileSize = gridDimensions / gridSize;
-container.style.gridTemplateColumns = `repeat(${gridSize}, auto)`;
+function makeGrid(gridSize = 16) {
+  while (container.firstChild) {
+    container.removeChild(container.lastChild);
+  }
 
-for (i = 0; i < gridSize * gridSize; i++) {
-  const tile = document.createElement("div");
-  tile.style.backgroundColor = random_rgba();
-  tile.style.width = `${tileSize}px`;
-  tile.style.height = `${tileSize}px`;
+  const gridDimensions = 600;
+  let tileSize = gridDimensions / gridSize;
+  container.style.gridTemplateColumns = `repeat(${gridSize}, auto)`;
 
-  tile.addEventListener("mouseover", function (e) {
-    this.style.backgroundColor = "red";
-  });
+  for (i = 0; i < gridSize * gridSize; i++) {
+    const tile = document.createElement("div");
+    tile.style.backgroundColor = random_rgba();
+    tile.style.width = `${tileSize}px`;
+    tile.style.height = `${tileSize}px`;
 
-  container.appendChild(tile);
+    tile.addEventListener("mouseover", function (e) {
+      this.style.backgroundColor = "red";
+    });
+
+    container.appendChild(tile);
+  }
+}
+
+makeGrid();
+
+function resetGrid() {
+  let gridSize = parseInt(prompt());
+  makeGrid(gridSize);
 }
 
 function random_rgba() {

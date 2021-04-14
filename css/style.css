@@ -1,8 +1,12 @@
 #container {
-  margin: 150px auto;
+  margin: 50px auto;
   width: min-content;
   height: min-content;
   display: grid;
   border-style: solid;
   border-width: 8px;
+}
+
+button {
+  margin: 50px auto;
 }
