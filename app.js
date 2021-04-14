@@ -28,7 +28,7 @@ function makeGrid(gridSize = 16) {
 makeGrid();
 
 function resetGrid() {
-  let gridSize = parseInt(prompt());
+  let gridSize = parseInt(prompt("New grid size", 16));
   makeGrid(gridSize);
 }
 
